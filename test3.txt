@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name>サンプルテンプレート</cc:Name>
+  <cc:Description>WEB/AP/DB 3層モデル</cc:Description>
+  <cc:Author>TIS Inc.</cc:Author>
+  <cc:Date>2013-12-13</cc:Date>
+  <cc:License>???</cc:License>
+  <cc:Infrastructures>
+    <cc:Infrastructure id="cloud1">
+      <cc:Name>private cloud A</cc:Name>
+    </cc:Infrastructure>
+  </cc:Infrastructures>
+  <cc:Machines>
+    <cc:Machine id="web-server">
+      <cc:Name>WEB Server</cc:Name>
+      <cc:SpecType>small</cc:SpecType>
+      <cc:OSType>CentOS</cc:OSType>
+      <cc:OSVersion>6.4</cc:OSVersion>
+      <cc:LocalStorage>8gb</cc:LocalStorage>
+      <cc:NetworkInterfaces>
+        <cc:NetworkInterface ref="private_net_g1" />
+      </cc:NetworkInterfaces>
+      <cc:MachineFilters>
+        <cc:MachineFilter ref="sec_in_80" />
+        <cc:MachineFilter ref="sec_in_all_deny" />
+        <cc:MachineFilter ref="sec_out_all_allow" />
+      </cc:MachineFilters>
+    </cc:Machine>
+    <cc:Machine id="ap-server">
+      <cc:Name>AP Server</cc:Name>
+      <cc:SpecType>medium</cc:SpecType>
+      <cc:OSType>CentOS</cc:OSType>
+      <cc:OSVersion>6.4</cc:OSVersion>
+      <cc:LocalStorage>8gb</cc:LocalStorage>
+      <cc:NetworkInterfaces>
+        <cc:NetworkInterface ref="private_net_g1" />
+      </cc:NetworkInterfaces>
+      <cc:Volumes>
+        <cc:Volume ref="test_vol1">
+          <cc:MountPoint>/data</cc:MountPoint>
+        </cc:Volume>
+      </cc:Volumes>
+      <cc:MachineFilters>
+        <cc:MachineFilter ref="sec_in_8009" />
+        <cc:MachineFilter ref="sec_in_all_deny" />
+        <cc:MachineFilter ref="sec_out_all_allow" />
+      </cc:MachineFilters>
+    </cc:Machine>
+    <cc:Machine id="db-server">
+      <cc:Name>DB Server</cc:Name>
+      <cc:SpecType>large</cc:SpecType>
+      <cc:OSType>CentOS</cc:OSType>
+      <cc:OSVersion>6.4</cc:OSVersion>
+      <cc:LocalStorage>8gb</cc:LocalStorage>
+      <cc:NetworkInterfaces>
+        <cc:NetworkInterface ref="private_net_g1" />
+      </cc:NetworkInterfaces>
+      <cc:Volumes>
+        <cc:Volume ref="test_vol2">
+          <cc:MountPoint>/data</cc:MountPoint>
+        </cc:Volume>
+      </cc:Volumes>
+      <cc:MachineFilters>
+        <cc:MachineFilter ref="sec_in_5432" />
+        <cc:MachineFilter ref="sec_in_all_deny" />
+        <cc:MachineFilter ref="sec_out_all_allow" />
+      </cc:MachineFilters>
+    </cc:Machine>
+  </cc:Machines>
+  <cc:MachineGroups>
+    <cc:MachineGroup id="web-server-g" ref="web-server">
+      <cc:Name>WEB Server Group</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="cloud1" />
+      </cc:Infrastructures>
+      <cc:Role ref="web_role" />
+      <cc:FloatingIP ref="eip1" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
+    <cc:MachineGroup id="ap-server-g" ref="ap-server">
+      <cc:Name>AP Server Group</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="cloud1" />
+      </cc:Infrastructures>
+      <cc:Role ref="ap_role" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
+    <cc:MachineGroup id="db-server-g" ref="db-server">
+      <cc:Name>DB Server Group</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="cloud1" />
+      </cc:Infrastructures>
+      <cc:Role ref="db_role" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
+  </cc:MachineGroups>
+  <cc:Roles>
+    <cc:Role id="web_role">
+      <cc:Name>WEB Server Role (Apache 2.2)</cc:Name>
+      <cc:CookbookURL>http://example.com/cookbooks/apache</cc:CookbookURL>
+      <cc:Recipe>default</cc:Recipe>
+      <cc:Import filetype="chef">parameters/web_role.rb</cc:Import>
+    </cc:Role>
+    <cc:Role id="ap_role">
+      <cc:Name>AP Server Role (Tomcat 6.0)</cc:Name>
+      <cc:CookbookURL>http://example.com/cookbooks/tomcat</cc:CookbookURL>
+      <cc:Recipe>default</cc:Recipe>
+      <cc:Import filetype="chef">parameters/ap_role.rb</cc:Import>
+    </cc:Role>
+    <cc:Role id="db_role">
+      <cc:Name>DB Server Role (PostgreSQL 9.2)</cc:Name>
+      <cc:CookbookURL>http://example.com/cookbooks/postgresql</cc:CookbookURL>
+      <cc:Recipe>default</cc:Recipe>
+      <cc:Import filetype="chef">parameters/db_role.rb</cc:Import>
+    </cc:Role>
+  </cc:Roles>
+  <cc:Volumes>
+    <cc:Volume id="test_vol1">
+      <cc:Size>10</cc:Size>
+      <cc:IOPS>high</cc:IOPS>
+    </cc:Volume>
+    <cc:Volume id="test_vol2">
+      <cc:Size>20</cc:Size>
+      <cc:IOPS>low</cc:IOPS>
+    </cc:Volume>
+  </cc:Volumes>
+  <cc:MachineFilters>
+    <cc:MachineFilter id="sec_in_80">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>80</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source>all</cc:Source>
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_in_8009">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>8009</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source ref="private_net_g1" />
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_in_5432">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>5432</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source ref="private_net_g1" />
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_in_all_deny">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>all</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source>all</cc:Source>
+      <cc:RuleAction>deny</cc:RuleAction>
+    </cc:MachineFilter>
+    <cc:MachineFilter id="sec_out_all_allow">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>all</cc:Port>
+      <cc:Direction>egress</cc:Direction>
+      <cc:Destination>all</cc:Destination>
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+  </cc:MachineFilters>
+  <cc:Networks>
+    <cc:Network id="private_net1">
+      <cc:Name>private network 1</cc:Name>
+    </cc:Network>
+  </cc:Networks>
+  <cc:NetworkGroups>
+    <cc:NetworkGroup id="private_net_g1">
+      <cc:Name>private network group 1</cc:Name>
+      <cc:Networks>
+        <cc:Network ref="private_net1">
+          <cc:Infrastructures>
+            <cc:Infrastructure ref="cloud1" />
+          </cc:Infrastructures>
+        </cc:Network>
+      </cc:Networks>
+      <cc:NetworkFilters>
+        <cc:NetworkFilter ref="acl_in_80" />
+        <cc:NetworkFilter ref="acl_in_all_deny" />
+        <cc:NetworkFilter ref="acl_out_all_allow" />
+      </cc:NetworkFilters>
+    </cc:NetworkGroup>
+  </cc:NetworkGroups>
+  <cc:NetworkFilters>
+    <cc:NetworkFilter id="acl_in_80">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>80</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source>all</cc:Source>
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:NetworkFilter>
+    <cc:NetworkFilter id="acl_in_all_deny">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>all</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source>all</cc:Source>
+      <cc:RuleAction>deny</cc:RuleAction>
+    </cc:NetworkFilter>
+    <cc:NetworkFilter id="acl_out_all_allow">
+      <cc:Protocol>TCP</cc:Protocol>
+      <cc:Port>all</cc:Port>
+      <cc:Direction>egress</cc:Direction>
+      <cc:Destination>all</cc:Destination>
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:NetworkFilter>
+  </cc:NetworkFilters>
+  <cc:FloatingIPs>
+    <cc:FloatingIP id="eip1">
+      <cc:Name>eip1</cc:Name>
+    </cc:FloatingIP>
+  </cc:FloatingIPs>
+</cc:System>
