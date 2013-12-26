@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name />
+  <cc:Description />
+  <cc:Author />
+  <cc:Date>2013-12-26</cc:Date>
+  <cc:License />
+  <cc:Infrastructures>
+    <cc:Infrastructure id="new_id">
+      <cc:Name>New Infrastructure</cc:Name>
+    </cc:Infrastructure>
+  </cc:Infrastructures>
+</cc:System>
