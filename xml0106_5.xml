@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name>name</cc:Name>
+  <cc:Description>description</cc:Description>
+  <cc:Author>fujita</cc:Author>
+  <cc:Date>2014-01-06</cc:Date>
+  <cc:License>apachev2</cc:License>
+  <cc:Infrastructures>
+    <cc:Infrastructure id="new_id">
+      <cc:Name>New Infrastructure</cc:Name>
+    </cc:Infrastructure>
+  </cc:Infrastructures>
+</cc:System>
