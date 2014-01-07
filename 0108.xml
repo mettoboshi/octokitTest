@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name />
+  <cc:Description />
+  <cc:Author />
+  <cc:Date>2014-01-08</cc:Date>
+  <cc:License />
+  <cc:Machines>
+    <cc:Machine id="new_machine_id">
+      <cc:Name>New Machine name</cc:Name>
+      <cc:SpecType>New Spec Type</cc:SpecType>
+      <cc:OSType>New OS Type</cc:OSType>
+      <cc:OSVersion>New OS Version</cc:OSVersion>
+      <cc:LocalStorage>New Local Storage</cc:LocalStorage>
+      <cc:MachineFilters />
+    </cc:Machine>
+  </cc:Machines>
+  <cc:MachineGroups>
+    <cc:MachineGroup id="new_machine_group_id" ref="new_machine_id">
+      <cc:Name>New Machine Group Name</cc:Name>
+      <cc:Infrastructures />
+      <cc:Role ref="New Role ID" />
+      <cc:FloatingIP ref="new_floating_ip_id" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+      <cc:Monitorings />
+    </cc:MachineGroup>
+  </cc:MachineGroups>
+  <cc:Roles>
+    <cc:Role id="New Role ID">
+      <cc:Name>New Role</cc:Name>
+      <cc:CookbookURL>http://example.com/cookbook_url</cc:CookbookURL>
+      <cc:Recipe>default</cc:Recipe>
+      <cc:Import filetype="chef">parameters/New Role ID.rb</cc:Import>
+    </cc:Role>
+  </cc:Roles>
+  <cc:FloatingIPs>
+    <cc:FloatingIP id="new_floating_ip_id">
+      <cc:Name>New FloatingIP Name</cc:Name>
+    </cc:FloatingIP>
+  </cc:FloatingIPs>
+</cc:System>
