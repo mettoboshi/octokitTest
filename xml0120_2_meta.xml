@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ccm:Editor xmlns:ccm="http://cloudconductor.org/namespaces/ccm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ccm:Node id="new_id" xsi:type="ccm:Infrastructure">
+    <ccm:x>240</ccm:x>
+    <ccm:y>101</ccm:y>
+    <ccm:z>0</ccm:z>
+    <ccm:width>640</ccm:width>
+    <ccm:height>250</ccm:height>
+  </ccm:Node>
+  <ccm:Node id="new_network_id" xsi:type="ccm:Network">
+    <ccm:x>204</ccm:x>
+    <ccm:y>174</ccm:y>
+    <ccm:z>1</ccm:z>
+    <ccm:children>2</ccm:children>
+  </ccm:Node>
+  <ccm:Node id="new_machine_group_id" xsi:type="ccm:Machine">
+    <ccm:x>240</ccm:x>
+    <ccm:y>144</ccm:y>
+    <ccm:z>2</ccm:z>
+  </ccm:Node>
+  <ccm:Node id="new_volume" xsi:type="ccm:Volume">
+    <ccm:x>227</ccm:x>
+    <ccm:y>265</ccm:y>
+    <ccm:z>3</ccm:z>
+  </ccm:Node>
+  <ccm:Node id="router" xsi:type="ccm:Router">
+    <ccm:x>437</ccm:x>
+    <ccm:y>258</ccm:y>
+    <ccm:z>4</ccm:z>
+  </ccm:Node>
+</ccm:Editor>
