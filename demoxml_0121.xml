@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name>demo0121</cc:Name>
+  <cc:Description>description</cc:Description>
+  <cc:Author>fujita</cc:Author>
+  <cc:Date>2014-01-21</cc:Date>
+  <cc:License>mit</cc:License>
+  <cc:Infrastructures>
+    <cc:Infrastructure id="new_id">
+      <cc:Name>New Infrastructure</cc:Name>
+    </cc:Infrastructure>
+  </cc:Infrastructures>
+  <cc:Machines>
+    <cc:Machine id="new_machine_id">
+      <cc:Name>New Machine name</cc:Name>
+      <cc:SpecType>New Spec Type</cc:SpecType>
+      <cc:OSType>New OS Type</cc:OSType>
+      <cc:OSVersion>New OS Version</cc:OSVersion>
+      <cc:NetworkInterfaces>
+        <cc:NetworkInterface ref="new_network_group_id" />
+      </cc:NetworkInterfaces>
+      <cc:Volumes>
+        <cc:Volume ref="new_volume" />
+      </cc:Volumes>
+      <cc:MachineFilters />
+    </cc:Machine>
+  </cc:Machines>
+  <cc:MachineGroups>
+    <cc:MachineGroup id="new_machine_group_id" ref="new_machine_id">
+      <cc:Name>New Machine Group Name</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="new_id" />
+      </cc:Infrastructures>
+      <cc:FloatingIP ref="new_floating_ip_id" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
+  </cc:MachineGroups>
+  <cc:Volumes>
+    <cc:Volume id="new_volume">
+      <cc:Size>0</cc:Size>
+      <cc:IOPS>high</cc:IOPS>
+    </cc:Volume>
+  </cc:Volumes>
+  <cc:Networks>
+    <cc:Network id="new_network_id">
+      <cc:Name>New Network Name</cc:Name>
+    </cc:Network>
+  </cc:Networks>
+  <cc:NetworkGroups>
+    <cc:NetworkGroup id="new_network_group_id">
+      <cc:Name>New Network Group Name</cc:Name>
+      <cc:Networks>
+        <cc:Network ref="new_network_id">
+          <cc:Infrastructures>
+            <cc:Infrastructure ref="new_id" />
+          </cc:Infrastructures>
+        </cc:Network>
+      </cc:Networks>
+      <cc:NetworkFilters />
+    </cc:NetworkGroup>
+  </cc:NetworkGroups>
+  <cc:FloatingIPs>
+    <cc:FloatingIP id="new_floating_ip_id">
+      <cc:Name>New FloatingIP Name</cc:Name>
+    </cc:FloatingIP>
+  </cc:FloatingIPs>
+</cc:System>
