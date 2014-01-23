@@ -9,8 +9,8 @@
       <ccm:height>250</ccm:height>
     </ccm:Node>
     <ccm:Node id="new_machine_id" xsi:type="ccm:Machine">
-      <ccm:x>307.5</ccm:x>
-      <ccm:y>133.5</ccm:y>
+      <ccm:x>617.5</ccm:x>
+      <ccm:y>93.5</ccm:y>
       <ccm:z>1</ccm:z>
     </ccm:Node>
   </ccm:Nodes>
