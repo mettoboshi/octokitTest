@@ -9,12 +9,12 @@
       <ccm:height>250</ccm:height>
     </ccm:Node>
     <ccm:Node id="new_machine_id" xsi:type="ccm:Machine">
-      <ccm:x>617.5</ccm:x>
-      <ccm:y>93.5</ccm:y>
-      <ccm:z>1</ccm:z>
-    </ccm:Node>
-    <ccm:Node id="new_machine_id" xsi:type="ccm:Machine">
       <ccm:x>420.5</ccm:x>
+      <ccm:y>96.5</ccm:y>
+      <ccm:z>2</ccm:z>
+    </ccm:Node>
+    <ccm:Node id="new_machine_id2" xsi:type="ccm:Machine">
+      <ccm:x>620.5</ccm:x>
       <ccm:y>96.5</ccm:y>
       <ccm:z>2</ccm:z>
     </ccm:Node>
