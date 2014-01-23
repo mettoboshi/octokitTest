@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name>test0122</cc:Name>
+  <cc:Description>des</cc:Description>
+  <cc:Author>fujita</cc:Author>
+  <cc:Date>2014-01-23</cc:Date>
+  <cc:License>mite</cc:License>
+  <cc:Infrastructures>
+    <cc:Infrastructure id="new_id">
+      <cc:Name>New Infrastructure</cc:Name>
+    </cc:Infrastructure>
+  </cc:Infrastructures>
+  <cc:Machines>
+    <cc:Machine id="new_machine_id">
+      <cc:Name>New Machine name</cc:Name>
+      <cc:SpecType>New Spec Type</cc:SpecType>
+      <cc:OSType>New OS Type</cc:OSType>
+      <cc:OSVersion>New OS Version</cc:OSVersion>
+      <cc:MachineFilters />
+    </cc:Machine>
+  </cc:Machines>
+  <cc:MachineGroups>
+    <cc:MachineGroup id="new_machine_group_id" ref="new_machine_id">
+      <cc:Name>New Machine Group Name</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="new_id" />
+      </cc:Infrastructures>
+      <cc:FloatingIP ref="new_floating_ip_id" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
+  </cc:MachineGroups>
+  <cc:FloatingIPs>
+    <cc:FloatingIP id="new_floating_ip_id">
+      <cc:Name>New FloatingIP Name</cc:Name>
+    </cc:FloatingIP>
+  </cc:FloatingIPs>
+</cc:System>
