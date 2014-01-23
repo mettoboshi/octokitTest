@@ -19,7 +19,7 @@
       <ccm:z>2</ccm:z>
     </ccm:Node>
     <ccm:Node id="new_monitor_id" xsi:type="ccm:Machine">
-      <ccm:x>428.5</ccm:x>
+      <ccm:x>430.5</ccm:x>
       <ccm:y>198.5</ccm:y>
       <ccm:z>3</ccm:z>
     </ccm:Node>

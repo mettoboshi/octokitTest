@@ -54,17 +54,29 @@
         <cc:Single />
       </cc:NodeType>
     </cc:MachineGroup>
-    <cc:MachineGroup id="monitor" ref="new_monitor_id">
+    <cc:MachineGroup id="new_monitor_group_id" ref="new_monitor_id">
       <cc:Name>New Monitor Group Name</cc:Name>
       <cc:Infrastructures>
         <cc:Infrastructure ref="new_id" />
       </cc:Infrastructures>
+      <cc:Roles>
+        <cc:Role ref="monitor">
+          <cc:Import type="chef_attribute" />
+        </cc:Role>
+      </cc:Roles>
       <cc:FloatingIP ref="new_floating_ip_id" />
       <cc:NodeType>
         <cc:Single />
       </cc:NodeType>
     </cc:MachineGroup>
   </cc:MachineGroups>
+  <cc:Roles>
+    <cc:Role type="chef" id="monitor">
+      <cc:Name>monitor</cc:Name>
+      <cc:Import type="chef_runlist">url</cc:Import>
+      <cc:Import type="chef_attribute">url</cc:Import>
+    </cc:Role>
+  </cc:Roles>
   <cc:FloatingIPs>
     <cc:FloatingIP id="new_floating_ip_id">
       <cc:Name>New FloatingIP Name</cc:Name>
@@ -78,8 +90,8 @@
   </cc:FloatingIPs>
   <cc:Monitorings>
     <cc:Monitoring id="test">
-      <cc:Name>test</cc:Name>
-      <cc:Import filetype="tesat">test</cc:Import>
+      <cc:Name>tst</cc:Name>
+      <cc:Import filetype="test">test</cc:Import>
     </cc:Monitoring>
   </cc:Monitorings>
 </cc:System>
