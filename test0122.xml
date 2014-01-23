@@ -18,6 +18,13 @@
       <cc:OSVersion>New OS Version</cc:OSVersion>
       <cc:MachineFilters />
     </cc:Machine>
+    <cc:Machine id="new_machine_id">
+      <cc:Name>New Machine name</cc:Name>
+      <cc:SpecType>New Spec Type</cc:SpecType>
+      <cc:OSType>New OS Type</cc:OSType>
+      <cc:OSVersion>New OS Version</cc:OSVersion>
+      <cc:MachineFilters />
+    </cc:Machine>
   </cc:Machines>
   <cc:MachineGroups>
     <cc:MachineGroup id="new_machine_group_id" ref="new_machine_id">
@@ -30,8 +37,21 @@
         <cc:Single />
       </cc:NodeType>
     </cc:MachineGroup>
+    <cc:MachineGroup id="new_machine_group_id" ref="new_machine_id">
+      <cc:Name>New Machine Group Name</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="new_id" />
+      </cc:Infrastructures>
+      <cc:FloatingIP ref="new_floating_ip_id" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
   </cc:MachineGroups>
   <cc:FloatingIPs>
+    <cc:FloatingIP id="new_floating_ip_id">
+      <cc:Name>New FloatingIP Name</cc:Name>
+    </cc:FloatingIP>
     <cc:FloatingIP id="new_floating_ip_id">
       <cc:Name>New FloatingIP Name</cc:Name>
     </cc:FloatingIP>
