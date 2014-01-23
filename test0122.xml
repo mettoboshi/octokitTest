@@ -54,7 +54,7 @@
         <cc:Single />
       </cc:NodeType>
     </cc:MachineGroup>
-    <cc:MachineGroup id="new_monitor_group_id" ref="new_monitor_id">
+    <cc:MachineGroup id="monitor" ref="new_monitor_id">
       <cc:Name>New Monitor Group Name</cc:Name>
       <cc:Infrastructures>
         <cc:Infrastructure ref="new_id" />
@@ -67,7 +67,7 @@
   </cc:MachineGroups>
   <cc:FloatingIPs>
     <cc:FloatingIP id="new_floating_ip_id">
-      <cc:Name />
+      <cc:Name>New FloatingIP Name</cc:Name>
     </cc:FloatingIP>
     <cc:FloatingIP id="new_floating_ip_id">
       <cc:Name />
@@ -79,11 +79,7 @@
   <cc:Monitorings>
     <cc:Monitoring id="test">
       <cc:Name>test</cc:Name>
-      <cc:Import filetype="test">test</cc:Import>
-    </cc:Monitoring>
-    <cc:Monitoring id="test2">
-      <cc:Name>test2</cc:Name>
-      <cc:Import filetype="test2">test2</cc:Import>
+      <cc:Import filetype="tesat">test</cc:Import>
     </cc:Monitoring>
   </cc:Monitorings>
 </cc:System>
